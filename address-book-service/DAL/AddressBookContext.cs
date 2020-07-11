@@ -8,10 +8,17 @@ namespace DAL
 {
     public class AddressBookContext : DbContext
     {
-        private const string CONNECTION_STRING = "Server=localhost;Port=5432;Database=AddressBookDb;User Id=postgres;Password=suky89;Pooling=true;";
+        private readonly string _connectionString;
+        private const string CONNECTION_STRING = "Server=localhost;Port=5432;Database=AddressBookDb;User Id=postgres;Password=suky89;";
         public DbSet<Contact> Contacts { get; set; }
 
-        public AddressBookContext() { }
+        public AddressBookContext()
+        { }
+
+        public AddressBookContext(string connectionString) 
+        {
+            _connectionString = connectionString;
+        }
         public AddressBookContext(DbContextOptions<AddressBookContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,7 +44,7 @@ namespace DAL
                     Id = 2,
                     Name = "Ivan Blatazar",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = new string[] { "099578681" }
                 },
                 new Contact
                 {
