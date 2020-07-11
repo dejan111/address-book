@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Persistence.Repositories
 {
-    class AddressBookRepository
+    public class AddressBookRepository
     {
     }
 }

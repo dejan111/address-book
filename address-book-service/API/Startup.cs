@@ -28,7 +28,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddEntityFrameworkNpgsql().AddDbContext<AddressBookContext>
+            services.AddDbContext<AddressBookContext>
                 (opt => opt.UseNpgsql(Configuration.GetConnectionString("postgreConnection")));
         }
 
