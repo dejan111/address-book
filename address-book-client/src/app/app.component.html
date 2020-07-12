@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts">
+    <tr *ngFor="let contact of contacts | paginate: {itemsPerPage: 5, currentPage: paginationPage }">
       <th>{{ contact.name }}</th>
       <th>{{ contact.dateOfBirth }}</th>
       <th>{{ contact.address.address }}</th>
@@ -28,4 +28,5 @@
       <!-- <th>{{ contact.phoneNum }}</th> -->
     </tr>
   </tbody>
+  <pagination-controls (pageChange)="paginationPage = $event"></pagination-controls>
 </table>

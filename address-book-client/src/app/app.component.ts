@@ -14,6 +14,9 @@ export class AppComponent {
   contactsService: ContactsService;
   contacts: Contact[];
 
+  //pagination
+  paginationPage: number = 1;
+
   constructor(contactsService: ContactsService){
     this.contactsService = contactsService;
   }
