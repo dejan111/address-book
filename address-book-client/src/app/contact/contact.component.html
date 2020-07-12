@@ -1,0 +1,23 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <input type="text" style="margin-right: 5px" formControlName="nameInput" placeholder="Contact name"><br/>
+    <input type="text" style="margin-right: 5px" formControlName="phoneNumInput" placeholder="Phone number"><br/><br/>
+
+    <span>Address info</span> 
+    <br/><br/>
+    <input type="text" style="margin-right: 5px" formControlName="addressInput" placeholder="Address"><br/>
+    <input type="text" style="margin-right: 5px" formControlName="cityInput" placeholder="City">
+    <input type="text" style="margin-right: 5px" formControlName="countryInput" placeholder="Country"><br/>
+    <input type="number" style="margin-right: 5px" formControlName="zipCodeInput" placeholder="Zip code">
+
+    <!-- <input [owlDateTimeTrigger]="dt1" 
+          [owlDateTime]="dt1"
+          rangeSeparator="-" 
+          placeholder="Date of birth" 
+          [min]="minDate"
+          formControlName="dateRangeInput">
+    <span [owlDateTimeTrigger]="dt1"></span>
+     <i class="fa fa-calendar"></i> -->
+    <!-- <owl-date-time pickerType="calendar" #dt1></owl-date-time> -->
+
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" [disabled]="!contactForm.valid">Save</button>
+  </form>

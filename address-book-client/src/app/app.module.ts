@@ -5,20 +5,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-import { ContactsService } from '../services/contacts.service'
+import { ContactsService } from '../services/contacts.service';
+import { ContactComponent } from './contact/contact.component';
+import { AddressBookComponent } from './address-book/address-book.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactComponent,
+    AddressBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule.forRoot ([
+      { path: 'Contact', component: ContactComponent },
+      { path: 'AddressBook', component: AddressBookComponent }
+    ])
   ],
   providers: [
     ContactsService

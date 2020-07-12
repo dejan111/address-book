@@ -1,32 +1,3 @@
-<span class="bg-teal-200">{{ title }}</span> <br/>
-<div class="searchContainer">
-  <form [formGroup]="contactSearchForm" (ngSubmit)="onSubmit()">
-    <input type="text" style="margin-right: 5px" formControlName="contactNameInput" placeholder="Search by name">
-
-    <button type="submit" [disabled]="!contactSearchForm.valid">Search</button>
-  </form>
-  <br/>
-</div>
-
-<table class="table-auto">
-  <thead>
-    <tr>
-      <th class="px-4 py-2">Name</th>
-      <th class="px-4 py-2">Date of birth</th>
-      <th class="px-4 py-2">Address</th>
-      <th class="px-4 py-2">Phone numbers</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let contact of contacts | paginate: {itemsPerPage: 5, currentPage: paginationPage }">
-      <th>{{ contact.name }}</th>
-      <th>{{ contact.dateOfBirth }}</th>
-      <th>{{ contact.address.address }}</th>
-      <th>
-        <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
-      </th>
-      <!-- <th>{{ contact.phoneNum }}</th> -->
-    </tr>
-  </tbody>
-  <pagination-controls (pageChange)="paginationPage = $event"></pagination-controls>
-</table>
+<!-- <button type="button" [hidden]="clicked" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="goToPage('AddressBook')">Go to address book</button> -->
+<router-outlet>
+</router-outlet>

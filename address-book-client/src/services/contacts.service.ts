@@ -19,6 +19,7 @@ const httpOptions = {
 @Injectable()
 export class ContactsService{
     addressBookUrl = '/api/addressbook/';
+    addContactUrl = '/api/addressbook/contact';
     addressBookResponse$: Observable<{}>;
 
     constructor(private http: HttpClient) {
@@ -28,5 +29,9 @@ export class ContactsService{
         console.log('evo me tu');
 
         return this.http.get<Contact[]>(this.addressBookUrl, httpOptions);
+    }
+
+    addContact(contact: Contact): Observable<Contact>{
+        return this.http.post<Contact>(this.addContactUrl, contact, httpOptions);
     }
 }

@@ -27,10 +27,13 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("contact")]
         public IActionResult AddContact([FromBody] Contact contact)
         {
             _unitOfWork.Contacts.Add(contact);
+            contact.Id = 55;
+            contact.Address.ContactAddressId = 55;
+            contact.Address.ContactId = 55;
             _unitOfWork.Complete();
 
             return Ok();
