@@ -18,7 +18,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("contacts")]
+        [Route("")]
         public IActionResult GetContacts()
         {
             var contacts = _unitOfWork.Contacts.GetContacts().ToList();
@@ -27,7 +27,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("contacts")]
+        [Route("")]
         public IActionResult AddContact([FromBody] Contact contact)
         {
             _unitOfWork.Contacts.Add(contact);

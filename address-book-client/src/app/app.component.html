@@ -1,15 +1,31 @@
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <img class="w-full" src="https://tailwindcss.com//img/card-top.jpg" alt="Sunset in the mountains">
-  <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2 text-black">The Coldest Sunset</div>
-      <p class="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-              perferendis eaque, exercitationem praesentium nihil.
-      </p>
-  </div>
-  <div class="px-6 py-4">
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-  </div>
+<span class="bg-teal-200">{{ title }}</span> <br/>
+<div class="searchContainer">
+  <form [formGroup]="contactSearchForm" (ngSubmit)="onSubmit()">
+    <input type="text" style="margin-right: 5px" formControlName="contactNameInput" placeholder="Search by name">
+
+    <button type="submit" [disabled]="!contactSearchForm.valid">Search</button>
+  </form>
+  <br/>
 </div>
+
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th class="px-4 py-2">Name</th>
+      <th class="px-4 py-2">Date of birth</th>
+      <th class="px-4 py-2">Address</th>
+      <th class="px-4 py-2">Phone numbers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts">
+      <th>{{ contact.name }}</th>
+      <th>{{ contact.dateOfBirth }}</th>
+      <th>{{ contact.address.address }}</th>
+      <th>
+        <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
+      </th>
+      <!-- <th>{{ contact.phoneNum }}</th> -->
+    </tr>
+  </tbody>
+</table>

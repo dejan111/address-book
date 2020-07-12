@@ -37,7 +37,7 @@ namespace DAL
                     Id = 1,
                     Name = "John Johnes",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134"}
+                    PhoneNum = new string[] { "0992221134", "0952211478", "0995135647"}
                 },
                 new Contact
                 {
@@ -51,7 +51,7 @@ namespace DAL
                     Id = 3,
                     Name = "Ivana Ivanović",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = new string[] { "0992221134", "0952211478", "0995135647" }
                 },
                 new Contact
                 {
@@ -72,7 +72,7 @@ namespace DAL
                     Id = 6,
                     Name = "Ivor Beleter",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = new string[] { "0992221134", "0952211478" }
                 },
                 new Contact
                 {
