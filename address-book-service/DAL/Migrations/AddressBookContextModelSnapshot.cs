@@ -24,6 +24,7 @@ namespace DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:IdentitySequenceOptions", "'20', '1', '', '', 'False', '1'")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("DateOfBirth")
@@ -141,6 +142,7 @@ namespace DAL.Migrations
                     b.Property<int>("ContactAddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:IdentitySequenceOptions", "'20', '1', '', '', 'False', '1'")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Address")
@@ -159,6 +161,9 @@ namespace DAL.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("ContactAddressId");
+
+                    b.HasIndex("Address")
+                        .IsUnique();
 
                     b.HasIndex("ContactId")
                         .IsUnique();
@@ -187,7 +192,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 3,
-                            Address = "Svetog Petra 2",
+                            Address = "Svetog Petra 5",
                             City = "Hvar",
                             ContactId = 3,
                             Country = "Hrvatska",
@@ -196,7 +201,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 4,
-                            Address = "Svetog Petra 2",
+                            Address = "Svetog Ivana 2",
                             City = "Hvar",
                             ContactId = 4,
                             Country = "Hrvatska",
@@ -205,7 +210,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 5,
-                            Address = "Svetog Petra 2",
+                            Address = "Zagrebačka 2",
                             City = "Hvar",
                             ContactId = 5,
                             Country = "Hrvatska",
@@ -214,7 +219,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 6,
-                            Address = "Svetog Petra 2",
+                            Address = "Splitska 8",
                             City = "Hvar",
                             ContactId = 6,
                             Country = "Hrvatska",
@@ -223,7 +228,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 7,
-                            Address = "Svetog Petra 2",
+                            Address = "Hvarska 6",
                             City = "Hvar",
                             ContactId = 7,
                             Country = "Hrvatska",
@@ -232,7 +237,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 8,
-                            Address = "Svetog Petra 2",
+                            Address = "Svetog Petra 100",
                             City = "Hvar",
                             ContactId = 8,
                             Country = "Hrvatska",
@@ -241,7 +246,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 9,
-                            Address = "Svetog Petra 2",
+                            Address = "Kerumova 7",
                             City = "Hvar",
                             ContactId = 9,
                             Country = "Hrvatska",
@@ -250,7 +255,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 10,
-                            Address = "Svetog Petra 2",
+                            Address = "Kumrovečka 11",
                             City = "Hvar",
                             ContactId = 10,
                             Country = "Hrvatska",
@@ -259,7 +264,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 11,
-                            Address = "Svetog Petra 2",
+                            Address = "Varaždinska 1",
                             City = "Hvar",
                             ContactId = 11,
                             Country = "Hrvatska",
@@ -268,7 +273,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 12,
-                            Address = "Svetog Petra 2",
+                            Address = "Dobriše Cesarića 9",
                             City = "Hvar",
                             ContactId = 12,
                             Country = "Hrvatska",
@@ -277,7 +282,7 @@ namespace DAL.Migrations
                         new
                         {
                             ContactAddressId = 13,
-                            Address = "Svetog Petra 2",
+                            Address = "Krleže 4",
                             City = "Hvar",
                             ContactId = 13,
                             Country = "Hrvatska",
