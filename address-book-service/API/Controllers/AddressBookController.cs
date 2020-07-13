@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Core;
 using DAL.Models;
@@ -19,11 +20,20 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult GetContacts()
+        public IActionResult GetContacts([FromQuery] string name)
         {
-            var contacts = _unitOfWork.Contacts.GetContacts().ToList();
+            var contacts = new List<Contact>();
+            if (String.IsNullOrEmpty(name))
+            {
+                contacts = _unitOfWork.Contacts.GetContacts().ToList();
+            }
+            else
+            {
+                contacts = _unitOfWork.Contacts.GetContacts(name).ToList();
+            }
 
             return Ok(contacts);
+
         }
 
         [HttpPost]

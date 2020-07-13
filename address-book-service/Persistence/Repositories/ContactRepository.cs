@@ -26,6 +26,13 @@ namespace Persistence.Repositories
             return contacts;
         }
 
+        public IEnumerable<Contact> GetContacts(string name)
+        {
+            var contacts = AddressBookContext.Contacts.Include(m => m.Address).Where(m => m.Name.ToLower().Contains(name.ToLower()));
+
+            return contacts;
+        }
+
         public Contact GetContact(int id)
         {
             return AddressBookContext.Contacts.Include(m => m.Address).Where(m => m.Id == id).FirstOrDefault();

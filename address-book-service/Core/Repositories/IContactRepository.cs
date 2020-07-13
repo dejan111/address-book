@@ -8,6 +8,7 @@ namespace Core.Repositories
     public interface IContactRepository : IRepository<Contact>
     {
         IEnumerable<Contact> GetContacts();
+        IEnumerable<Contact> GetContacts(string name);
         Contact GetContact(int id);
     }
 }
