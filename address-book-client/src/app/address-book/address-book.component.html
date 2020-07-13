@@ -1,35 +1,36 @@
-<span class="bg-teal-200">{{ title }}</span> <br/>
-
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="goToPage('Contact')">Add contact</button>
-<br/>
-<div class="searchContainer">
-  <form [formGroup]="contactSearchForm" (ngSubmit)="onSubmit()">
-    <input type="text" style="margin-right: 5px" formControlName="contactNameInput" placeholder="Search by name">
-
-    <button type="submit" [disabled]="!contactSearchForm.valid">Search</button>
-  </form>
-  <br/>
+<div class="">
+    <h1 class="text-center font-bold py-6">{{ title }}</h1> <br/>
+    <div id="searchContainer" class="px-8 py-2 text-center">
+        <input class="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" #cityInput id="cityInput" type="text" placeholder="Search by name">
+        <button class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" (click)="getContacts(cityInput.value)">Search</button>
+        <br/>
+    </div>
+    <div id="tableDiv" class="px-8 py-2 text-center justify-center">
+        <table class="border table-auto">
+        <thead>
+            <tr>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Date of birth</th>
+            <th class="px-4 py-2">Address</th>
+            <th class="px-4 py-2">Phone numbers</th>
+            <th class="px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts | paginate: {itemsPerPage: 5, currentPage: paginationPage }">
+            <td class="border px-4 py-2">{{ contact.name }}</td>
+            <td class="border px-4 py-2">{{ contact.dateOfBirth }}</td>
+            <td class="border px-4 py-2">{{ contact.address.address }}</td>
+            <td class="border px-4 py-2">
+                <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
+            </td>
+            <td class="border px-4 py-2"></td>
+            </tr>
+        </tbody>
+        </table>
+        <br/>
+        <pagination-controls (pageChange)="paginationPage = $event"></pagination-controls>
+        <br/>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="goToPage('Contact')">Add contact</button>
+    </div>
 </div>
-
-<table class="table-auto">
-  <thead>
-    <tr>
-      <th class="px-4 py-2">Name</th>
-      <th class="px-4 py-2">Date of birth</th>
-      <th class="px-4 py-2">Address</th>
-      <th class="px-4 py-2">Phone numbers</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let contact of contacts | paginate: {itemsPerPage: 5, currentPage: paginationPage }">
-      <th>{{ contact.name }}</th>
-      <th>{{ contact.dateOfBirth }}</th>
-      <th>{{ contact.address.address }}</th>
-      <th>
-        <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
-      </th>
-      <!-- <th>{{ contact.phoneNum }}</th> -->
-    </tr>
-  </tbody>
-  <pagination-controls (pageChange)="paginationPage = $event"></pagination-controls>
-</table>
