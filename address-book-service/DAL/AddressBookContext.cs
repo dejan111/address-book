@@ -29,7 +29,13 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //setting unique constraints
             modelBuilder.Entity<Contact>().HasIndex(p => new { p.Name}).IsUnique();
+            modelBuilder.Entity<ContactAddress>().HasIndex(p => new { p.Address }).IsUnique();
+
+            //ensure that autoincrement values start after data seed values
+            modelBuilder.Entity<Contact>().Property(b => b.Id).HasIdentityOptions(startValue: 20);
+            modelBuilder.Entity<ContactAddress>().Property(b => b.ContactAddressId).HasIdentityOptions(startValue: 20);
 
             modelBuilder.Entity<Contact>().HasData(
                 new Contact
@@ -37,7 +43,7 @@ namespace DAL
                     Id = 1,
                     Name = "John Johnes",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134"}
+                    PhoneNum = new string[] { "0992221134", "0952211478", "0995135647"}
                 },
                 new Contact
                 {
@@ -51,7 +57,7 @@ namespace DAL
                     Id = 3,
                     Name = "Ivana Ivanović",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = new string[] { "0992221134", "0952211478", "0995135647" }
                 },
                 new Contact
                 {
@@ -72,7 +78,7 @@ namespace DAL
                     Id = 6,
                     Name = "Ivor Beleter",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = new string[] { "0992221134", "0952211478" }
                 },
                 new Contact
                 {
@@ -148,7 +154,7 @@ namespace DAL
                 {
                     ContactAddressId = 3,
                     ContactId = 3,
-                    Address = "Svetog Petra 2",
+                    Address = "Svetog Petra 5",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -157,7 +163,7 @@ namespace DAL
                 {
                     ContactAddressId = 4,
                     ContactId = 4,
-                    Address = "Svetog Petra 2",
+                    Address = "Svetog Ivana 2",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -166,7 +172,7 @@ namespace DAL
                 {
                     ContactAddressId = 5,
                     ContactId = 5,
-                    Address = "Svetog Petra 2",
+                    Address = "Zagrebačka 2",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -175,7 +181,7 @@ namespace DAL
                 {
                     ContactAddressId = 6,
                     ContactId = 6,
-                    Address = "Svetog Petra 2",
+                    Address = "Splitska 8",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -184,7 +190,7 @@ namespace DAL
                 {
                     ContactAddressId = 7,
                     ContactId = 7,
-                    Address = "Svetog Petra 2",
+                    Address = "Hvarska 6",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -193,7 +199,7 @@ namespace DAL
                 {
                     ContactAddressId = 8,
                     ContactId = 8,
-                    Address = "Svetog Petra 2",
+                    Address = "Svetog Petra 100",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -202,7 +208,7 @@ namespace DAL
                 {
                     ContactAddressId = 9,
                     ContactId = 9,
-                    Address = "Svetog Petra 2",
+                    Address = "Kerumova 7",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -211,7 +217,7 @@ namespace DAL
                 {
                     ContactAddressId = 10,
                     ContactId = 10,
-                    Address = "Svetog Petra 2",
+                    Address = "Kumrovečka 11",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -220,7 +226,7 @@ namespace DAL
                 {
                     ContactAddressId = 11,
                     ContactId = 11,
-                    Address = "Svetog Petra 2",
+                    Address = "Varaždinska 1",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -229,7 +235,7 @@ namespace DAL
                 {
                     ContactAddressId = 12,
                     ContactId = 12,
-                    Address = "Svetog Petra 2",
+                    Address = "Dobriše Cesarića 9",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
@@ -238,7 +244,7 @@ namespace DAL
                 {
                     ContactAddressId = 13,
                     ContactId = 13,
-                    Address = "Svetog Petra 2",
+                    Address = "Krleže 4",
                     City = "Hvar",
                     Country = "Hrvatska",
                     ZipCode = 55223
