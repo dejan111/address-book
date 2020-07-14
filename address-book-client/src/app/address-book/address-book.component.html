@@ -1,11 +1,11 @@
-<div class="">
-    <h1 class="text-center font-bold py-6">{{ title }}</h1> <br/>
-    <div id="searchContainer" class="px-8 py-2 text-center">
+<div class="flex flex-col">
+    <h1 class="justify-center font-bold pt-4 pd-2 px-8 text-3xl">{{ title }}</h1> <br/>
+    <div id="searchContainer" class="px-8 py-2">
         <input class="appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" #cityInput id="cityInput" type="text" placeholder="Search by name">
         <button class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" (click)="getContacts(cityInput.value)">Search</button>
         <br/>
     </div>
-    <div id="tableDiv" class="px-8 py-2 text-center justify-center">
+    <div id="tableDiv" class="px-8 py-2 justify-center">
         <table class="border table-auto">
         <thead>
             <tr>
@@ -24,7 +24,7 @@
             <td class="border px-4 py-2">
                 <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
             </td>
-            <td class="border px-4 py-2"></td>
+            <td class="border px-4 py-2"><button class="delete" title="Delete contact" (click)="delete(contact.id)">X</button><button class="px-2" title="Edit contact" (click)="editContact(contact)">Edit</button></td>
             </tr>
         </tbody>
         </table>

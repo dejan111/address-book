@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, Data } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
 import { Contact } from '../../models/contact';
+import { DataService } from '../../models/dataService';
 
 @Component({
   selector: 'app-address-book',
@@ -18,7 +19,7 @@ export class AddressBookComponent implements OnInit {
   //pagination
   paginationPage: number = 1;
 
-  constructor(private router: Router, contactsService: ContactsService){
+  constructor(private router: Router, contactsService: ContactsService, public dataService: DataService){
     this.contactsService = contactsService;
   }
 
@@ -46,5 +47,17 @@ export class AddressBookComponent implements OnInit {
   goToPage(pageName: string):void{
     let result = this.router.navigate([`${pageName}`]);
     console.log(result);
+  }
+
+  delete(id: number): void{
+    this.paginationPage = 1;
+    this.contactsService.deleteContact(id).subscribe(() => {
+      this.getContacts('');
+    });
+  }
+
+  editContact(contact: Contact){
+    this.dataService.contact = contact;
+    this.router.navigate(['Contact']);
   }
 }

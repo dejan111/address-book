@@ -50,7 +50,7 @@ namespace API.Controllers
         [Route("contact/{id}")]
         public IActionResult DeleteContact([FromRoute] int id)
         {
-            var contact = _unitOfWork.Contacts.GetContact(id);
+            var contact = _unitOfWork.Contacts.Get(id);
             _unitOfWork.Contacts.Remove(contact);
             _unitOfWork.Complete();
 
@@ -59,10 +59,27 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("contact/{id}")]
-        public IActionResult UpdateContact([FromRoute] int id)
+        public IActionResult UpdateContact([FromBody] Contact contact, [FromRoute] int id)
         {
-            var contact = _unitOfWork.Contacts.GetContact(id);
-            //TODO do changes
+            var contactToUpdate = _unitOfWork.Contacts.GetContact(id);
+            if (contactToUpdate == null)
+            {
+                return BadRequest();
+            }
+
+            if (id != contact.Id)
+            {
+                return BadRequest();
+            }
+
+            contactToUpdate.Name = contact.Name;
+            contactToUpdate.DateOfBirth = contact.DateOfBirth;
+            contactToUpdate.PhoneNum = contact.PhoneNum;
+            contactToUpdate.Address.Address = contact.Address.Address;
+            contactToUpdate.Address.City = contact.Address.City;
+            contactToUpdate.Address.Country = contact.Address.Country;
+            contactToUpdate.Address.ZipCode = contact.Address.ZipCode;
+
             _unitOfWork.Complete();
 
             return Ok();

@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 //import { catchError } from 'rxjs/operators';
 
 import { Contact } from '../models/contact';
-//import { FlightRequest } from './flightRequest';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -19,7 +18,7 @@ const httpOptions = {
 @Injectable()
 export class ContactsService{
     addressBookUrl = '/api/addressbook/';
-    addContactUrl = '/api/addressbook/contact';
+    contactUrl = '/api/addressbook/contact';
     addressBookResponse$: Observable<{}>;
 
     constructor(private http: HttpClient) {
@@ -34,6 +33,21 @@ export class ContactsService{
     }
 
     addContact(contact: Contact): Observable<Contact>{
-        return this.http.post<Contact>(this.addContactUrl, contact, httpOptions);
+      console.log('service.add');
+      return this.http.post<Contact>(this.contactUrl, contact, httpOptions);
     }
+
+    deleteContact(id: number): Observable<{}> {
+      const url = `${this.contactUrl}/${id}`;
+      return this.http.delete(url, httpOptions);
+    }
+
+    updateContact(contact: Contact): Observable<Contact>{
+      console.log('service.update');
+
+      console.log(contact);
+
+      const url = `${this.contactUrl}/${contact.id}`;
+      return this.http.put<Contact>(url, contact, httpOptions);
+  }
 }
