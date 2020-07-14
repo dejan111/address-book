@@ -43,91 +43,91 @@ namespace DAL
                     Id = 1,
                     Name = "John Johnes",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134"}
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 2,
                     Name = "Ivan Blatazar",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "099578681" }
+                    PhoneNum = "099578681"
                 },
                 new Contact
                 {
                     Id = 3,
                     Name = "Ivana Ivanović",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134"}
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 4,
                     Name = "Ivanka Perić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 5,
                     Name = "Iva Gordanić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 6,
                     Name = "Ivor Beleter",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134"}
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 7,
                     Name = "Petar Kajić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 8,
                     Name = "Ingrid Budić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 9,
                     Name = "Igor Igorić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 10,
                     Name = "Valentino Valentić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 11,
                     Name = "Barbara Ivković",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 12,
                     Name = "Tea Teić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 },
                 new Contact
                 {
                     Id = 13,
                     Name = "Viktor Draganić",
                     DateOfBirth = new DateTime(1990, 6, 4),
-                    PhoneNum = new string[] { "0992221134" }
+                    PhoneNum = "0992221134"
                 }
             );
 

@@ -9,7 +9,7 @@ namespace DAL.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string[] PhoneNum { get; set; }
+        public string PhoneNum { get; set; }
 
         public ContactAddress Address { get; set; }
     }

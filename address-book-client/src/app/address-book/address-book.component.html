@@ -21,9 +21,7 @@
             <td class="border px-4 py-2">{{ contact.name }}</td>
             <td class="border px-4 py-2">{{ contact.dateOfBirth }}</td>
             <td class="border px-4 py-2">{{ contact.address.address }}</td>
-            <td class="border px-4 py-2">
-                <p *ngFor="let num of contact.phoneNum"> {{ num }} </p>
-            </td>
+            <td class="border px-4 py-2">{{ contact.phoneNum }}</td>
             <td class="border px-4 py-2"><button class="delete" title="Delete contact" (click)="delete(contact.id)">X</button><button class="px-2" title="Edit contact" (click)="editContact(contact)">Edit</button></td>
             </tr>
         </tbody>

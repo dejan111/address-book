@@ -34,8 +34,6 @@ namespace API
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllers();
-            //services.AddDbContext<AddressBookContext>
-            //    (opt => opt.UseNpgsql(Configuration.GetConnectionString("postgreConnection")));
             services.AddScoped<IUnitOfWork>(
                 p =>
                 {

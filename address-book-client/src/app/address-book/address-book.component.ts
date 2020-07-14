@@ -23,18 +23,9 @@ export class AddressBookComponent implements OnInit {
     this.contactsService = contactsService;
   }
 
-  // contactSearchForm = new FormGroup({
-  //   contactNameInput: new FormControl('')
-  // })
-
   ngOnInit(){
     this.getContacts('');
   }
-
-  // onSubmit(){
-  //   let name = this.contactSearchForm.value.contactNameInput;
-  //   this.getContacts(name);
-  // }
 
   getContacts(name: string): void {
     this.paginationPage = 1;
@@ -45,6 +36,7 @@ export class AddressBookComponent implements OnInit {
   }
 
   goToPage(pageName: string):void{
+    console.log('add contact click');
     let result = this.router.navigate([`${pageName}`]);
     console.log(result);
   }

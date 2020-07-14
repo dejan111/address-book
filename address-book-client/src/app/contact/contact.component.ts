@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ContactComponent implements OnInit {
   contactsService: ContactsService;
-  contact: Contact = <Contact> { address: {}, phoneNum: [] };
+  contact: Contact = <Contact> { address: {}};
   addContactBtn: Boolean = true;
 
   maxDate : Date;
@@ -76,8 +76,7 @@ export class ContactComponent implements OnInit {
 
   setContactInputs(){
     this.contact.name = this.contactForm.value.nameInput;
-    this.contact.phoneNum.length = 0;
-    this.contact.phoneNum.push(this.contactForm.value.phoneNumInput[0]);
+    this.contact.phoneNum = this.contactForm.value.phoneNumInput;
     this.contact.address.address = this.contactForm.value.addressInput;
     this.contact.address.city = this.contactForm.value.cityInput;
     this.contact.address.country = this.contactForm.value.countryInput;
@@ -90,6 +89,8 @@ export class ContactComponent implements OnInit {
 
     this.setContactInputs();
     this.contactsService.updateContact(this.contact).subscribe(() =>{
+      this.contact = null;
+      this.dataService = null;
       this.router.navigate(['AddressBook']);
     });
   }

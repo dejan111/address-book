@@ -23,25 +23,38 @@ namespace API.Controllers
         public IActionResult GetContacts([FromQuery] string name)
         {
             var contacts = new List<Contact>();
-            if (String.IsNullOrEmpty(name))
+            try
             {
-                contacts = _unitOfWork.Contacts.GetContacts().ToList();
+                if (String.IsNullOrEmpty(name))
+                {
+                    contacts = _unitOfWork.Contacts.GetContacts().ToList();
+                }
+                else
+                {
+                    contacts = _unitOfWork.Contacts.GetContacts(name).ToList();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                contacts = _unitOfWork.Contacts.GetContacts(name).ToList();
+                return StatusCode(500);
             }
 
             return Ok(contacts);
-
         }
 
         [HttpPost]
         [Route("contact")]
         public IActionResult AddContact([FromBody] Contact contact)
         {
-            _unitOfWork.Contacts.Add(contact);
-            _unitOfWork.Complete();
+            try
+            {
+                _unitOfWork.Contacts.Add(contact);
+                _unitOfWork.Complete();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
 
             return Ok();
         }
@@ -50,9 +63,21 @@ namespace API.Controllers
         [Route("contact/{id}")]
         public IActionResult DeleteContact([FromRoute] int id)
         {
-            var contact = _unitOfWork.Contacts.Get(id);
-            _unitOfWork.Contacts.Remove(contact);
-            _unitOfWork.Complete();
+            var contact = new Contact();
+            try
+            {
+                contact = _unitOfWork.Contacts.Get(id);
+                if (contact == null)
+                {
+                    return BadRequest();
+                }
+                _unitOfWork.Contacts.Remove(contact);
+                _unitOfWork.Complete();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
 
             return Ok();
         }
@@ -62,7 +87,7 @@ namespace API.Controllers
         public IActionResult UpdateContact([FromBody] Contact contact, [FromRoute] int id)
         {
             var contactToUpdate = _unitOfWork.Contacts.GetContact(id);
-            if (contactToUpdate == null)
+            if (contactToUpdate == null || contact == null)
             {
                 return BadRequest();
             }

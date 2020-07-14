@@ -2,7 +2,7 @@ export interface Contact{
     id: number,
     name: string,
     dateOfBirth: Date,
-    phoneNum: string[],
+    phoneNum: string,
     address: {
         [key: string]: Address
     }
